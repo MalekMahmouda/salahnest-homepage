@@ -48,22 +48,132 @@ document.addEventListener("keydown", (event) => { if (event.key === "Escape") cl
 document.addEventListener("click", (event) => { if (!primaryNav.contains(event.target) && !menuToggle.contains(event.target)) closeMenu(); });
 
 
-const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-if (!prefersReducedMotion.matches && "IntersectionObserver" in window) {
-  document.documentElement.classList.add("motion-ready");
-  const revealTargets = document.querySelectorAll(
-    ".hero-copy, .hero-art, .intro-strip, .section-heading, .project-card, .eduverse-intro, .case-visual-wrap, .case-details > *, .case-proof, .principle-grid > *, .about-section > *, .closing"
-  );
-  const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target);
+// Motion only: the reference's GSAP/ScrollTrigger + Lenis choreography,
+// mapped to existing elements. No pinning, spacer heights, text splitting,
+// or artwork changes: the portfolio's document flow stays exactly as it was.
+if (window.gsap && window.ScrollTrigger && "IntersectionObserver" in window) {
+  const { gsap, ScrollTrigger } = window;
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize: true });
+  const motion = gsap.matchMedia();
+  try {
+    motion.add({
+      mobile: "(max-width: 680px)",
+      desktop: "(min-width: 681px)",
+      reduced: "(prefers-reduced-motion: reduce)"
+    }, (context) => {
+      if (context.conditions.reduced) return;
+      const mobile = context.conditions.mobile;
+      document.documentElement.classList.add("motion-ready");
+      let lenis;
+      let tick;
+      let alive = true;
+      let refreshFrame = 0;
+      const refresh = () => {
+        cancelAnimationFrame(refreshFrame);
+        refreshFrame = requestAnimationFrame(() => {
+          if (!alive) return;
+          if (lenis) lenis.resize();
+          ScrollTrigger.refresh();
+        });
+      };
+      const focusContent = (event) => {
+        const target = event.target.closest(".project-card, .case-visual-wrap, .closing");
+        if (!target || !target.contains(document.activeElement)) return;
+        // Keyboard navigation must never land on faded or scaled-away links.
+        const top = Math.max(0, window.scrollY + target.getBoundingClientRect().top - 110);
+        if (lenis) lenis.scrollTo(top, { immediate: true });
+      };
+      context.add(() => () => {
+        alive = false;
+        cancelAnimationFrame(refreshFrame);
+        if (tick) gsap.ticker.remove(tick);
+        if (lenis) lenis.destroy();
+        languageToggle.removeEventListener("click", refresh);
+        document.removeEventListener("focusin", focusContent);
+        document.documentElement.classList.remove("motion-ready");
+      });
+
+      if (window.Lenis) {
+        lenis = new window.Lenis({ autoRaf: false, smoothWheel: true, syncTouch: false, anchors: { offset: -100 }, allowNestedScroll: true });
+        lenis.on("scroll", ScrollTrigger.update);
+        tick = (time) => lenis.raf(time * 1000);
+        gsap.ticker.add(tick);
+        gsap.ticker.lagSmoothing(0);
       }
+
+      // Reference entrance: 0/.30/.50/.78s, .40/.30/.26/.30s durations.
+      // The identity remains visible while it slides in, like its portrait.
+      gsap.timeline()
+        .from(".hero-profile", { y: 28, duration: .4, ease: "power2.out" }, 0)
+        .from(".hero-copy > .eyebrow, .hero-copy h1, .hero-lede", { y: 14, opacity: 0, duration: .3 }, .3)
+        .from(".hero-art", { y: 12, opacity: 0, duration: .26 }, .5)
+        .from(".feature-chips > span", { y: 12, opacity: 0, duration: .26, stagger: .08 }, .5)
+        .from(".hero-actions, .hero-footnote", { y: 10, opacity: 0, duration: .3 }, .78);
+
+      const reveal = (element) => gsap.from(element, {
+        y: 20, opacity: .1, ease: "power2.out",
+        scrollTrigger: { trigger: element, start: "top 92%", end: "clamp(top 68%)", scrub: .5 }
+      });
+      gsap.utils.toArray(".intro-strip, .section-heading, .eduverse-intro, .case-proof, .about-copy").forEach(reveal);
+
+      // Reference's depth-focused cards; no horizontal track or pinned scene
+      // is introduced, so both original project cards keep their own grid cells.
+      gsap.utils.toArray(".project-card").forEach((card, index) => {
+        gsap.from(card, {
+          y: 18, rotationY: (index % 2 ? -1 : 1) * 24, scale: .78,
+          opacity: .3, transformPerspective: 1200, ease: "none",
+          scrollTrigger: { trigger: card, start: "top 92%", end: "clamp(top 48%)", scrub: .65 }
+        });
+      });
+
+      // The reference notebook's 3D arrival, applied to the existing preview.
+      gsap.from(".case-visual-wrap", {
+        y: mobile ? 100 : 160, rotationZ: -12, rotationX: 20,
+        scale: .8, transformPerspective: 1200, ease: "power2.out",
+        scrollTrigger: { trigger: ".case-visual-wrap", start: "top bottom", end: "clamp(top 15%)", scrub: .7 }
+      });
+      gsap.utils.toArray(".case-details, .principle-grid").forEach((group) => {
+        gsap.from(group.children, {
+          y: 20, opacity: .1, stagger: .055, ease: "power2.out",
+          scrollTrigger: { trigger: group, start: "top 92%", end: "clamp(top 68%)", scrub: .5 }
+        });
+      });
+      gsap.from(".about-mark, .about-note", {
+        y: 65, rotationZ: -12, scale: .8, ease: "power2.out",
+        scrollTrigger: { trigger: ".about-section", start: "top bottom", end: "clamp(top 50%)", scrub: .7 }
+      });
+
+      // Same 14% / 2-degree pattern parallax, on the portfolio's own grid.
+      gsap.to(".art-grid", {
+        yPercent: 14, rotation: 2, ease: "none",
+        scrollTrigger: { start: 0, end: "max", scrub: 1 }
+      });
+      gsap.utils.toArray(".art-spark").forEach((spark, index) => {
+        const sign = index % 2 ? 1 : -1;
+        gsap.fromTo(spark, { y: sign * 10 }, {
+          y: -sign * 35, rotationZ: sign * 20, ease: "none",
+          scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: 1.2 }
+        });
+      });
+
+      // Reference closing zoom and late content rise, without its layout pin.
+      // Finish at the original scale, preserving the existing final design.
+      gsap.timeline({ scrollTrigger: {
+        trigger: ".closing", start: "top 95%", end: "clamp(top 20%)", scrub: .7
+      } })
+        .from(".closing", { scale: .45, opacity: .3, ease: "power2.inOut", duration: 1 }, 0)
+        .from(".closing > :not(.closing-star)", { opacity: 0, y: 40, duration: .3 }, .7);
+
+      languageToggle.addEventListener("click", refresh);
+      document.addEventListener("focusin", focusContent);
+      if (document.fonts) document.fonts.ready.then(refresh);
+      refresh();
     });
-  }, { threshold: 0.12, rootMargin: "0px 0px -7% 0px" });
-  revealTargets.forEach((element) => {
-    element.classList.add("reveal-on-scroll");
-    revealObserver.observe(element);
-  });
+  } catch (error) {
+    // A missing/unsupported motion feature must never hide the portfolio.
+    motion.revert();
+    document.documentElement.classList.remove("motion-ready");
+    console.warn("Portfolio motion unavailable; showing the static page.", error);
+  }
 }

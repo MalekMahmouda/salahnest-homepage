@@ -12,6 +12,10 @@ const copy = {
     skip: "انتقل إلى المحتوى", menu: "القائمة", "nav-home": "الرئيسية", "nav-work": "أعمال مختارة", "nav-about": "نبذة عني", "hero-eyebrow": "مساحة صغيرة لأعمالي", "hero-title-one": "أدوات رقمية", "hero-title-two": "تصنع فرقًا يوميًا.", "hero-lede": "أنا مالك محمود. أعمل على مشاريع رقمية عملية، وأهتم بالوضوح والهدوء والتفاصيل التي تجعل الروتين اليومي أسهل.", "hero-cta-work": "استكشف أعمالي", "hero-cta-app": "افتح صلاح نست", "hero-footnote": "مشاريع مستقلة، أبنيها خطوة بخطوة بعناية.", "featured-label": "المشروع الأبرز", "featured-tagline": "يومك في صلاتك.", "featured-summary": "رفيق شخصي للصلاة والقرآن والقبلة والذِّكر.", "chip-prayers": "مواقيت الصلاة", "chip-quran": "القرآن", "chip-dhikr": "الأذكار", "intro-strip": "أشياء مفيدة صُنعت بقصد وفضول بسيط.", "scroll-cue": "تابع للاستكشاف", "work-eyebrow": "مشاريع أعمل عليها", "work-title": "أعمال مختارة", "work-note": "مشروعان، لكل منهما حاجة يومية مختلفة.", "salahnest-kind": "منتج · منصات متعددة", "salahnest-title": "مساحة أهدأ للعبادة اليومية.", "salahnest-description": "رفيق إسلامي يحسب مواقيت الصلاة محليًا، ويضم قراءة القرآن وصوته، واتجاه القبلة، والأذكار، وتقويمًا هجريًا، وسجلًا شخصيًا للصلوات.", "salahnest-tag-one": "يعمل دون اتصال أساسًا", "salahnest-tag-two": "العربية والإنجليزية", "salahnest-tag-three": "الويب · أندرويد · ويندوز", "open-project": "افتح المشروع", "view-source": "الكود المصدري", "eduverse-kind": "إعادة تصميم بوابة · متجاوبة", "eduverse-title": "طريق أوضح في حياة الطالب.", "eduverse-description": "إعادة تصميم متجاوبة لبوابة طلابية تنظم المقررات والجداول وروابط الحصص المباشرة بواجهة ثنائية اللغة.", "eduverse-tag-one": "تنظيم المقررات", "eduverse-tag-two": "العربية والإنجليزية", "eduverse-tag-three": "واجهة متجاوبة", "explore-case-study": "استكشف إعادة التصميم", "case-eyebrow": "دراسة حالة · EDUVERSE", "case-title": "بوابة طلابية أسهل في التنقل.", "case-lede": "تجمع إعادة تصميم بوابة الطالب المقررات والجداول والدروس والمواد وروابط الحصص المباشرة في تجربة متجاوبة تدعم العربية والإنجليزية.", "visit-eduverse": "زيارة إعادة تصميم بوابة الطالب", "visual-label": "معاينة عامة · شاشة الدخول والواجهة الأولية", "visual-caption": "شاشة الدخول والواجهة الأولية العامة الفعلية من إعادة تصميم بوابة الطالب — لا تظهر بيانات طلاب؛ تبقى سجلات الحساب خلف تسجيل الدخول.", "detail-one-title": "تنظيم أوضح للمقررات", "detail-one-copy": "تجمع البوابة الدورات والدروس والمواد في مكان أوضح لمتابعة التعلّم.", "detail-two-title": "تصميم للغتين", "detail-two-copy": "دعم العربية والإنجليزية، مع تخطيط RTL، يجعل الواجهة المتجاوبة ملائمة لمختلف الأجهزة.", "detail-three-title": "حماية بيانات الحساب", "detail-three-copy": "لا تعرض المعاينة العامة أي سجلات طلابية. تبقى بيانات الحساب الشخصية خلف تدفق تسجيل الدخول الرسمي.", "case-proof": "الصورة أعلاه هي شاشة الدخول والواجهة الأولية العامة الفعلية لإعادة التصميم المنشورة، وليست نموذجًا تصوريًا. تبقى سجلات الطالب الخاصة مرتبطة بالحساب وخلف تسجيل الدخول.", "principles-eyebrow": "كيف أحب أن أبني", "principles-title": "مفيد، صادق، ومدروس.", "principle-one-title": "الفائدة أولًا", "principle-one-copy": "ابدأ بحاجة حقيقية، واجعل الخطوة التالية واضحة.", "principle-two-title": "هدوء في التصميم", "principle-two-copy": "أبرز المهم، واترك بقية العناصر بعيدًا عن الطريق.", "principle-three-title": "وضوح الحدود", "principle-three-copy": "اشرح ما يعمل، وما يبقى محليًا، وأين تتوقف الأداة.", "about-eyebrow": "نبذة بسيطة عني", "about-title": "أنا مالك.", "about-lede": "أحب تحويل الأفكار اليومية إلى أدوات رقمية واضحة ومريحة. صلاح نست هو مشروعي المستمر، وإعادة تصميم بوابة الطالب تجربة تعليمية متجاوبة وثنائية اللغة.", "github-profile": "اكتشف مشاريعي على GitHub", "about-quote": "ينبغي أن يجعل البرنامج الجيد المشكلة التي يحلها أخف قليلًا.", "closing-kicker": "شكرًا لزيارتك", "closing-title-one": "هناك دائمًا شيء", "closing-title-two": "يمكننا تحسينه قليلًا.", "closing-cta": "اكتشف صلاح نست", "footer-line": "صُنع بعناية. صفحة شخصية لمشاريع مستقلة.", "back-top": "إلى الأعلى"
   }
 };
+copy.en["profile-name"] = "Malek Mahmoud";
+copy.en["profile-age"] = "13 years old";
+copy.ar["profile-name"] = "مالك محمود";
+copy.ar["profile-age"] = "١٣ سنة";
 
 const languageToggle = document.getElementById("languageToggle");
 const languageLabel = document.getElementById("languageLabel");
@@ -42,3 +46,24 @@ menuToggle.addEventListener("click", () => { const open = menuToggle.getAttribut
 primaryNav.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
 document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeMenu(); });
 document.addEventListener("click", (event) => { if (!primaryNav.contains(event.target) && !menuToggle.contains(event.target)) closeMenu(); });
+
+
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+if (!prefersReducedMotion.matches && "IntersectionObserver" in window) {
+  document.documentElement.classList.add("motion-ready");
+  const revealTargets = document.querySelectorAll(
+    ".hero-copy, .hero-art, .intro-strip, .section-heading, .project-card, .eduverse-intro, .case-visual-wrap, .case-details > *, .case-proof, .principle-grid > *, .about-section > *, .closing"
+  );
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -7% 0px" });
+  revealTargets.forEach((element) => {
+    element.classList.add("reveal-on-scroll");
+    revealObserver.observe(element);
+  });
+}

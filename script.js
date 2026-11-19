@@ -16,6 +16,14 @@ copy.en["profile-name"] = "Malek Mahmoud";
 copy.en["profile-age"] = "13 years old";
 copy.ar["profile-name"] = "مالك محمود";
 copy.ar["profile-age"] = "١٣ سنة";
+copy.en["capsule-stable-title"] = "Dhikr Capsule 1.0.0 — stable Windows release";
+copy.en["capsule-stable-note"] = "Standalone Windows installer · stable release.";
+copy.en["capsule-stable-details"] = "Stable release details";
+copy.en["capsule-stable-download"] = "Download Windows installer";
+copy.ar["capsule-stable-title"] = "ذِكر كابسول 1.0.0 — إصدار ويندوز المستقر";
+copy.ar["capsule-stable-note"] = "مثبّت مستقل لويندوز · إصدار مستقر.";
+copy.ar["capsule-stable-details"] = "تفاصيل الإصدار المستقر";
+copy.ar["capsule-stable-download"] = "تنزيل مثبّت ويندوز";
 
 const languageToggle = document.getElementById("languageToggle");
 const languageLabel = document.getElementById("languageLabel");

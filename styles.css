@@ -337,3 +337,17 @@ a:focus-visible, button:focus-visible { outline: 2px solid #4c8064; outline-offs
   .hero-art:hover, .project-card:hover { translate: none; transform: none; }
   .button:hover, .button:active, .language-toggle:hover { transform: none; }
 }
+
+
+/* Compact release links for the existing SalahNest project card. */
+.project-downloads { display: grid; gap: 9px; margin-top: 16px; }
+.project-release { padding: 13px 14px; border: 1px solid #e1e6de; border-radius: 13px; background: rgba(255,255,252,.72); }
+.project-release h4 { margin: 0; color: #26382f; font-size: 12px; font-weight: 750; line-height: 1.5; letter-spacing: -.01em; }
+.project-release-note { margin: 4px 0 10px; color: #6d786f; font-size: 10px; line-height: 1.55; }
+.project-release-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.project-release-actions a { display: inline-flex; align-items: center; gap: 6px; color: var(--forest); font-size: 10px; font-weight: 700; line-height: 1.5; text-decoration: none; transition: gap .2s, background .2s; }
+.project-release-actions a:hover { gap: 10px; }
+.project-release-actions .project-release-download { padding: 7px 11px; border-radius: 99px; color: #fffdf6; background: var(--forest); }
+.project-release-actions .project-release-download:hover { background: #173a31; }
+.project-release-actions a:focus-visible { outline: 2px solid #a4772e; outline-offset: 3px; }
+@media (max-width: 390px) { .project-release { padding: 12px; } .project-release-actions { gap: 8px 11px; } }

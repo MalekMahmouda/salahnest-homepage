@@ -351,3 +351,49 @@ a:focus-visible, button:focus-visible { outline: 2px solid #4c8064; outline-offs
 .project-release-actions .project-release-download:hover { background: #173a31; }
 .project-release-actions a:focus-visible { outline: 2px solid #a4772e; outline-offset: 3px; }
 @media (max-width: 390px) { .project-release { padding: 12px; } .project-release-actions { gap: 8px 11px; } }
+
+
+/* SalahNest: verified app preview and direct stable downloads. */
+.project-release-primary { border-color: #b8d0c1; background: linear-gradient(135deg, #f2f7ef, #fffefa); }
+.project-release-primary h4 { color: var(--forest-deep); }
+.project-release-primary .project-release-download { white-space: normal; }
+.salahnest-showcase { padding-block: 82px 90px; }
+.salahnest-showcase .section-heading { margin-bottom: 28px; }
+.salahnest-preview-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 18px; }
+.salahnest-preview-card { min-width: 0; margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 22px; background: var(--white); box-shadow: 0 12px 34px rgba(27,54,44,.055); }
+.salahnest-preview-image { display: block; padding: 10px; background: #edf1e9; }
+.salahnest-preview-image:focus-visible { outline-offset: -3px; }
+.salahnest-preview-image img { display: block; width: 100%; height: auto; border-radius: 13px; }
+.salahnest-preview-card figcaption { display: flex; flex-direction: column; gap: 4px; padding: 14px 18px 17px; color: #6b786e; font-size: 11px; line-height: 1.7; }
+.salahnest-preview-card figcaption strong { color: #263a31; font-size: 13px; font-weight: 720; }
+.preview-night { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(230px, 320px); align-items: center; gap: 24px; padding: 18px; background: linear-gradient(135deg, #f5f6ef, #e9efe8); }
+.preview-night .salahnest-preview-image { grid-column: 1; justify-self: center; width: min(100%, 290px); padding: 0; background: transparent; }
+.preview-night .salahnest-preview-image img { max-height: 570px; width: auto; max-width: 100%; margin-inline: auto; object-fit: contain; }
+.preview-night figcaption { grid-column: 2; padding: 24px; border-inline-start: 1px solid #d3ddd4; }
+.salahnest-usage-note { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 18px; padding: 17px 20px; border: 1px solid #d7e0d6; border-radius: 16px; background: #eef3ec; color: #68756c; }
+.salahnest-usage-note p { margin: 0; font-size: 10px; line-height: 1.8; }
+.salahnest-usage-note strong { color: var(--forest); font-size: 10px; font-weight: 750; }
+@media (max-width: 900px) {
+  .salahnest-preview-grid { grid-template-columns: 1fr; }
+  .preview-night { grid-column: auto; }
+}
+@media (max-width: 680px) {
+  .salahnest-showcase { padding-block: 66px 70px; }
+  .salahnest-preview-grid { gap: 14px; }
+  .salahnest-preview-card { border-radius: 18px; }
+  .salahnest-preview-image { padding: 7px; }
+  .salahnest-preview-card figcaption { padding: 12px 14px 14px; font-size: 10px; }
+  .salahnest-preview-card figcaption strong { font-size: 12px; }
+  .preview-night { grid-template-columns: 1fr; justify-items: center; gap: 8px; padding: 12px; }
+  .preview-night .salahnest-preview-image { grid-column: auto; width: min(100%, 280px); }
+  .preview-night figcaption { grid-column: auto; width: 100%; padding: 14px 8px 5px; border-inline-start: 0; border-top: 1px solid #d3ddd4; text-align: center; }
+  .salahnest-usage-note { grid-template-columns: 1fr; gap: 12px; padding: 15px 16px; }
+  .salahnest-usage-note p { font-size: 10px; }
+}
+
+.salahnest-theme-toggle { display: flex; align-items: center; gap: 7px; margin-top: 10px; }
+.salahnest-theme-toggle button { min-height: 36px; padding: 0 13px; border: 1px solid #cbd7ce; border-radius: 999px; background: #fffefa; color: var(--forest); font-size: 10px; font-weight: 700; cursor: pointer; transition: background .18s, color .18s, border-color .18s; }
+.salahnest-theme-toggle button[aria-pressed="true"] { border-color: var(--forest); background: var(--forest); color: #fffefa; }
+.salahnest-theme-toggle button:hover { border-color: #8eaa95; }
+.salahnest-theme-toggle button:focus-visible { outline: 2px solid #a4772e; outline-offset: 3px; }
+@media (max-width: 680px) { .salahnest-theme-toggle { justify-content: center; } .salahnest-theme-toggle button { min-height: 40px; padding-inline: 16px; } }
